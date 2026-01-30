@@ -22,7 +22,7 @@ agent:
     # -- The pull policy for the image
     pullPolicy: IfNotPresent
     # -- Overrides the image tag whose default is the chart appVersion.
-    tag: '3.13.0'
+    tag: '3.12.0'
 
   env:
     WOODPECKER_SERVER: 'woodpecker-server:9000'
@@ -188,7 +188,7 @@ server:
     # -- The image pull policy
     pullPolicy: IfNotPresent
     # -- Overrides the image tag whose default is the chart appVersion.
-    tag: '3.13.0'
+    tag: '3.12.0'
 
   # -- Add environment variables for the server component
   env:
