@@ -42,8 +42,7 @@ agent:
   #       key: datasource
 
   # -- Add extra secret that is contains environment variables
-  extraSecretNamesForEnvFrom:
-    - woodpecker-default-agent-secret
+  extraSecretNamesForEnvFrom: []
 
   persistence:
     # -- Enable the creation of the persistent volume
