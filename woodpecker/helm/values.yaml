@@ -192,7 +192,6 @@ server:
 
   # -- Add environment variables for the server component
   env:
-    WOODPECKER_HOST: 'http://my-fake-woodpecker.com'
     WOODPECKER_GITHUB_PRIVATE: 'true'
 
   # -- Add extra environment variables from the config list
