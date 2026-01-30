@@ -42,7 +42,7 @@ controller:
     tag: ''
 
     # -- Controller image tag label
-    tagLabel: jdk17
+    tagLabel: ''
     # -- Controller image pull policy
     pullPolicy: "Always"
   # -- Controller image pull secret
