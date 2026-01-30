@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{template "jenkins.fullname" . }}-nodeport
+  namespace: {{ template "jenkins.namespace" . }}
+  labels:
+    "app.kubernetes.io/name": '{{ template "jenkins.name" .}}'
+    {{- if .Values.renderHelmLabels }}
+    "helm.sh/chart": "{{ template "jenkins.label" .}}"
+    {{- end }}
+    "app.kubernetes.io/managed-by": "{{ .Release.Service }}"
+    "app.kubernetes.io/instance": "{{ .Release.Name }}"
+    "app.kubernetes.io/component": "{{ .Values.controller.componentName }}"
+    {{- if .Values.controller.serviceLabels }}
+{{ toYaml .Values.controller.serviceLabels | indent 4 }}
+    {{- end }}
+{{- if .Values.controller.serviceAnnotations }}
+  annotations:
+{{ toYaml .Values.controller.serviceAnnotations | indent 4 }}
+{{- end }}
+spec:
+  ports:
+    - port: {{.Values.controller.servicePort}}
+      name: http
+      targetPort: {{ .Values.controller.targetPort }}
+      nodePort: {{.Values.controller.nodePort}}
+  selector:
+    "app.kubernetes.io/component": "{{ .Values.controller.componentName }}"
+    "app.kubernetes.io/instance": "{{ .Release.Name }}"
+  type: NodePort
