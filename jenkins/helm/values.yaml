@@ -342,7 +342,7 @@ controller:
   csrf:
     defaultCrumbIssuer:
       # -- Enable the default CSRF Crumb issuer
-      enabled: true
+      enabled: false
       # -- Enable proxy compatibility
       proxyCompatability: true
 
