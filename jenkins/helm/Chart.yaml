@@ -4,7 +4,7 @@ annotations:
     - Helm chart is also now deployed on GitHub packages and can be installed from `oci://ghcr.io/jenkinsci/helm-charts/jenkins`
   artifacthub.io/images: |
     - name: jenkins
-      image: docker.io/jenkins/jenkins:2.462.2-jdk17
+      image: docker.io/jenkins/jenkins:2.548
     - name: k8s-sidecar
       image: docker.io/kiwigrid/k8s-sidecar:1.27.6
     - name: inbound-agent
