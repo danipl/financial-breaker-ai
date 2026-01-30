@@ -131,14 +131,14 @@ controller:
 
   # Overrides the init container default values
   # -- Resources allocation (Requests and Limits) for Init Container
-  initContainerResources: {}
-  # initContainerResources:
-  #   requests:
-  #     cpu: "50m"
-  #     memory: "256Mi"
-  #   limits:
-  #     cpu: "2000m"
-  #     memory: "4096Mi"
+  # initContainerResources: {}
+  initContainerResources:
+    requests:
+      cpu: "50m"
+      memory: "256Mi"
+    limits:
+      cpu: "2000m"
+      memory: "4096Mi"
   # -- Environment variable sources for Init Container
   initContainerEnvFrom: []
 
