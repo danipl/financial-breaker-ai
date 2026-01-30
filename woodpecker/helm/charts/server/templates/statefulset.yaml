@@ -125,6 +125,10 @@ spec:
             - secretRef:
                 name: {{ . }}
             {{- end }}
+            {{- range .Values.extraConfigMapNamesForEnvFrom }}
+            - configMapRef:
+                name: {{ . }}
+            {{- end }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

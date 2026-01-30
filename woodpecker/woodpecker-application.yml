@@ -7,14 +7,11 @@ spec:
   project: default
   source:
     repoURL: https://github.com/danipl/financial-breaker-ai.git
-    chart: woodpecker/helm
+    path: woodpecker/helm
     targetRevision: HEAD
     helm:
-      values: |
-        server:
-          enabled: true
-        agent:
-          enabled: true
+      valueFiles:
+        - values.yaml
   destination:
     server: https://kubernetes.default.svc
     namespace: woodpecker

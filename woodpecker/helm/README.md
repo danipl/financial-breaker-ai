@@ -1,6 +1,6 @@
 # woodpecker
 
-![Version: 3.4.2](https://img.shields.io/badge/Version-3.4.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.12.0](https://img.shields.io/badge/AppVersion-3.12.0-informational?style=flat-square)
+![Version: 3.4.2](https://img.shields.io/badge/Version-3.4.2-informational?style=flat-square) ![Type: application](https://img.shields.io/badge/Type-application-informational?style=flat-square) ![AppVersion: 3.13.0](https://img.shields.io/badge/AppVersion-3.13.0-informational?style=flat-square)
 
 **Source Code**: <https://github.com/woodpecker-ci/woodpecker>
 
@@ -18,11 +18,44 @@ helm install woodpecker woodpecker/woodpecker
 ```
 
 **Note**: The `woodpecker/woodpecker` chart contains both the server and the agent.
-If you want to install only the server or agent you can use the [`woodpecker/server`](charts/server/README.md) or [`woodpecker/agent`](charts/server/README.md) charts respectively.
+If you want to install only the server or agent you can use the [`woodpecker/server`](./charts/server/README.md) or [
+`woodpecker/agent`](./charts/server/README.md) charts respectively.
+
+# Create namespace first
+
+First, create a dedicated namespace for Woodpecker to keep its resources isolated within your cluster.
+
+```sh
+kubectl create namespace woodpecker
+```
+
+# Create the secret
+
+Create a Kubernetes Secret to securely store your GitHub OAuth application credentials. Replace the placeholders with
+your actual Client ID and Secret obtained from GitHub.
+
+```sh
+kubectl create secret generic woodpecker-secrets \
+--namespace woodpecker \
+--from-literal=WOODPECKER_GITHUB_CLIENT=paste_your_client_id_here \
+--from-literal=WOODPECKER_GITHUB_SECRET=paste_your_client_secret_here
+```
+
+Create a ConfigMap to store non-sensitive environment variables. These define how Woodpecker identifies itself and who
+has administrative access.
+
+```sh
+kubectl create configmap woodpecker-env \
+--namespace woodpecker \
+--from-literal=WOODPECKER_HOST=your_host \
+--from-literal=WOODPECKER_ADMIN=your_github_username \
+--from-literal=WOODPECKER_GITHUB=true
+```
 
 ### Backend Configuration
 
-The Kubernetes backend configuration is documented in greater detail in the Woodpecker [documentation](https://woodpecker-ci.org/docs/next/administration/backends/kubernetes).
+The Kubernetes backend configuration is documented in greater detail in the
+Woodpecker [documentation](https://woodpecker-ci.org/docs/next/administration/backends/kubernetes).
 
 ### Terraform
 
@@ -62,14 +95,14 @@ See the [3.0.0 release notes](https://woodpecker-ci.org/migrations#300).
 ## Requirements
 
 | Repository | Name   | Version |
-| ---------- | ------ | ------- |
+|------------|--------|---------|
 |            | agent  | 2.0.1   |
 |            | server | 3.0.1   |
 
 ## Values
 
 | Key                                                         | Type   | Default                                                                                                                                                                                          | Description                                                                                                                                                                                                                                                                                                                              |
-| ----------------------------------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|-------------------------------------------------------------|--------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | additionalObjects                                           | list   | `[]`                                                                                                                                                                                             | Allow adding additional custom kubernets objects                                                                                                                                                                                                                                                                                         |
 | agent.affinity                                              | object | `{}`                                                                                                                                                                                             | Specifies the affinity                                                                                                                                                                                                                                                                                                                   |
 | agent.dnsConfig                                             | object | `{}`                                                                                                                                                                                             | Overrides the default DNS configuration                                                                                                                                                                                                                                                                                                  |

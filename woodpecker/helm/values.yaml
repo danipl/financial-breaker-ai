@@ -192,12 +192,14 @@ server:
 
   # -- Add environment variables for the server component
   env:
-    WOODPECKER_ADMIN: 'woodpecker,admin'
-    WOODPECKER_HOST: 'https://xxxxxxx'
-    # WOODPECKER_GITHUB: "true"
+
+  # -- Add extra environment variables from the config list
+  extraConfigMapNamesForEnvFrom:
+    - woodpecker-env
 
   # -- Add extra environment variables from the secrets list
-  extraSecretNamesForEnvFrom: []
+  extraSecretNamesForEnvFrom:
+    - woodpecker-secrets
 
   # whether to create the default WOODPECKER_AGENT_SECRET in woodpecker-default-agent-secret
   createAgentSecret: true
