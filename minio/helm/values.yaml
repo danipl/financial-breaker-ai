@@ -579,7 +579,7 @@ service:
   ##
   nodePorts:
     api: ""
-  nodePort: 40000
+  nodePort: 30091
   ## @param service.clusterIP Service Cluster IP
   ## e.g.:
   ## clusterIP: None
