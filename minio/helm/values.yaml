@@ -40,7 +40,7 @@ global:
 nameOverride: ""
 ## @param namespaceOverride String to fully override common.names.namespace
 ##
-namespaceOverride: ""
+namespaceOverride: "slm-training"
 ## @param fullnameOverride String to fully override common.names.fullname template
 ##
 fullnameOverride: ""
