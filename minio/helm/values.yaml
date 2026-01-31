@@ -579,7 +579,6 @@ service:
   ##
   nodePorts:
     api: ""
-  nodePort: 30091
   ## @param service.clusterIP Service Cluster IP
   ## e.g.:
   ## clusterIP: None
@@ -1271,6 +1270,7 @@ console:
     ##
     nodePorts:
       http: ""
+    nodePort: 30091
     ## @param console.service.clusterIP Service Cluster IP
     ## e.g.:
     ## clusterIP: None

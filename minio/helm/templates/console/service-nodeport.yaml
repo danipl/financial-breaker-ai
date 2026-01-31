@@ -1,0 +1,31 @@
+{{- /*
+Copyright Broadcom, Inc. All Rights Reserved.
+SPDX-License-Identifier: APACHE-2.0
+*/}}
+
+{{- if .Values.console.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ template "minio.console.fullname" . }}-nodeport
+  namespace: {{ include "common.names.namespace" . | quote }}
+  {{- $versionLabel := dict "app.kubernetes.io/version" (include "common.images.version" (dict "imageRoot" .Values.console.image "chart" .Chart)) }}
+  {{- $labels := include "common.tplvalues.merge" (dict "values" (list .Values.commonLabels $versionLabel) "context" .) }}
+  labels: {{- include "common.labels.standard" (dict "customLabels" $labels "context" .) | nindent 4 }}
+    app.kubernetes.io/component: console
+    app.kubernetes.io/part-of: minio
+  {{- if or .Values.console.service.annotations .Values.commonAnnotations }}
+  {{- $annotations := include "common.tplvalues.merge" (dict "values" (list .Values.console.service.annotations .Values.commonAnnotations) "context" .) }}
+  annotations: {{- include "common.tplvalues.render" (dict "value" $annotations "context" .) | nindent 4 }}
+  {{- end }}
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: {{ .Values.console.service.ports.http }}
+      targetPort: http
+      nodePort: {{ .Values.console.service.nodePort }}
+  selector:
+    app.kubernetes.io/component: console
+    app.kubernetes.io/part-of: minio
+{{- end }}
