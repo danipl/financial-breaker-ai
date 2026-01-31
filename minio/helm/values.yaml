@@ -76,9 +76,9 @@ extraDeploy: []
 ## @param image.debug Specify if debug logs should be enabled
 ##
 image:
-  registry: docker.io
-  repository: bitnami/minio
-  tag: latest
+  registry: quay.io
+  repository: minio/minio
+  tag: RELEASE.2025-09-07T16-13-09Z
   digest: ""
   ## Specify a imagePullPolicy
   ## ref: https://kubernetes.io/docs/concepts/containers/images/#pre-pulled-images
@@ -942,9 +942,9 @@ console:
   ## @param console.image.pullSecrets MinIO&reg; Console image pull secrets
   ##
   image:
-    registry: docker.io
-    repository: bitnami/minio-object-browser
-    tag: 2.0.2-debian-12-r3
+    registry: quay.io
+    repository: minio/console
+    tag: v0.30.0
     digest: ""
     ## Specify a imagePullPolicy
     ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
