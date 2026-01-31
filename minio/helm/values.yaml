@@ -80,6 +80,8 @@ image:
   repository: minio/minio
   tag: RELEASE.2025-09-07T16-13-09Z
   digest: ""
+  command: [ "/bin/sh", "-c" ]
+  args: [ "minio server /bitnami/minio/data --console-address :9001" ]
   ## Specify a imagePullPolicy
   ## ref: https://kubernetes.io/docs/concepts/containers/images/#pre-pulled-images
   ##
