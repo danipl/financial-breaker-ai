@@ -432,16 +432,20 @@ autoscaling:
     #   selectPolicy: Max
 
 # -- A map of arguments and values to pass to the `mlflow server` command. Keys must be camelcase. Helm will turn them to kebabcase style.
-extraArgs: {}
-# Number of gunicorn worker processes to handle requests (default: 4).
+# extraArgs: {}
+extraArgs:
+  host: "0.0.0.0"
+  allowedHosts: "*"
+  corsAllowedOrigins: "*"
+  # Number of gunicorn worker processes to handle requests (default: 4).
   # workers: TEXT
-# A prefix which will be prepended to the path of all static paths.
-# It must always start with slash `/`
-# e.g. /mlflow
+  # A prefix which will be prepended to the path of all static paths.
+  # It must always start with slash `/`
+  # e.g. /mlflow
   # staticPrefix: TEXT
-# Additional command line options forwarded to gunicorn processes.
+  # Additional command line options forwarded to gunicorn processes.
   # gunicornOpts: TEXT
-# Additional command line options for waitress-serve.
+  # Additional command line options for waitress-serve.
   # waitressOpts: TEXT
 
 # -- A list of flags to pass to `mlflow server` command. Items must be camelcase. Helm will turn them to kebabcase style.
