@@ -434,10 +434,9 @@ autoscaling:
 # -- A map of arguments and values to pass to the `mlflow server` command. Keys must be camelcase. Helm will turn them to kebabcase style.
 # extraArgs: {}
 extraArgs:
-  extraArgs:
-    host: "0.0.0.0"
-    allowedHosts: "*"
-    corsAllowedOrigins: "*"
+  host: "0.0.0.0"
+  allowedHosts: "*"
+  corsAllowedOrigins: "*"
 # Number of gunicorn worker processes to handle requests (default: 4).
   # workers: TEXT
 # A prefix which will be prepended to the path of all static paths.
