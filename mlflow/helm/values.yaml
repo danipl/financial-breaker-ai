@@ -432,8 +432,7 @@ autoscaling:
     #   selectPolicy: Max
 
 # -- A map of arguments and values to pass to the `mlflow server` command. Keys must be camelcase. Helm will turn them to kebabcase style.
-# extraArgs: {}
-extraArgs:
+extraArgs: {}
 # Number of gunicorn worker processes to handle requests (default: 4).
   # workers: ""
 # A prefix which will be prepended to the path of all static paths.
@@ -441,7 +440,7 @@ extraArgs:
 # e.g. /mlflow
   # staticPrefix: TEXT
 # Additional command line options forwarded to gunicorn processes.
-  gunicornOpts: "--host 0.0.0.0 --allowed-hosts='*' --cors-allowed-origins='*'"
+  # gunicornOpts: ""
 # Additional command line options for waitress-serve.
   # waitressOpts: TEXT
 

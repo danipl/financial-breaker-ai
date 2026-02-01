@@ -299,6 +299,8 @@ spec:
           args:
             - server
             - --host=0.0.0.0
+            - --allowed-hosts='*'
+            - --cors-allowed-origins='*'
             - --port={{ .Values.service.containerPort }}
           {{- if or .Values.backendStore.postgres.enabled .Values.postgresql.enabled }}
             - --backend-store-uri=postgresql{{ $dbConnectionDriver }}://
