@@ -441,7 +441,7 @@ extraArgs:
 # e.g. /mlflow
   # staticPrefix: TEXT
 # Additional command line options forwarded to gunicorn processes.
-  gunicornOpts: "--host 0.0.0.0"
+  gunicornOpts: "--host 0.0.0.0 --allowed-hosts='*' --cors-allowed-origins='*'"
 # Additional command line options for waitress-serve.
   # waitressOpts: TEXT
 
