@@ -15,6 +15,6 @@ spec:
       targetPort: {{ .Values.service.containerPortName }}
       protocol: TCP
       name: {{ .Values.service.name }}
-      nodePort: {{ .Values.service.nodePort }}
+      nodePort: 30092
   selector:
     {{- include "mlflow.selectorLabels" . | nindent 4 }}

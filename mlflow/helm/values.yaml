@@ -112,8 +112,6 @@ service:
   containerPort: 5000
   # -- Default container port name
   containerPortName: mlflow
-  # -- Default node port
-  nodePort: 30092
   # -- Additional service annotations
   annotations: {}
 
