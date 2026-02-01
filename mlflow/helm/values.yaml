@@ -438,7 +438,7 @@ extraArgs:
   allowedHosts: "*"
   corsAllowedOrigins: "*"
 # Number of gunicorn worker processes to handle requests (default: 4).
-  workers: "null"
+  workers: "0"
 # A prefix which will be prepended to the path of all static paths.
 # It must always start with slash `/`
 # e.g. /mlflow
