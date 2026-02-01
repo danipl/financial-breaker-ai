@@ -105,7 +105,7 @@ service:
   # -- This sets the service type more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services-service-types
   type: ClusterIP
   # -- This sets the ports more information can be found here: https://kubernetes.io/docs/concepts/services-networking/service/#field-spec-ports
-  port: 80
+  port: 5000
   # -- Default Service name
   name: http
   # -- Default container port
@@ -445,7 +445,8 @@ extraArgs: {}
   # waitressOpts: TEXT
 
 # -- A list of flags to pass to `mlflow server` command. Items must be camelcase. Helm will turn them to kebabcase style.
-extraFlags: []
+extraFlags:
+  - disableSecurityMiddleware
 # If specified, enables serving of artifact uploads, downloads, and list requests by routing these requests
 # to the storage location that is specified by ‘–artifact-destination’ directly through a proxy.
   # serveArtifacts
